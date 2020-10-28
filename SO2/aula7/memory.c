@@ -66,18 +66,6 @@ uint64 page_round_down(uint64 addr) {
 }
 
 
-void verifica_descritores(int qtd){
-    int i;
-    uint8* desc = HEAP_START;
-    for (i = 0; i < qtd; i++){
-        if (last_page(*(desc + i))){
-            printf("Ultima Pagina\n");
-        } else {
-            printf("Pagina Normal\n");
-        }
-    }
-}
-
 
 void *
 alloc(int pages) {
@@ -169,10 +157,6 @@ memory_init() {
     for(int i = 0; i < 10; i ++) {
         printf("Descritor %d - %d\n", i, *(desc+i));
     }
-
-    verifica_descritores(20);
-
-
 
 }
 
