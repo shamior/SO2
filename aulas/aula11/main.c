@@ -1,8 +1,24 @@
 #include "types.h"
 #include "defs.h"
 #include "console.h"
+#include "riscv.h"
 
 void test();
+
+static void verify_MIE(){
+    register uint64 a5 asm("mstatus");
+    printf("%d", a5);
+    uint64 NAOTENHOMAISESPERACAS = r_mstatus();
+    printf("x = %d\n", NAOTENHOMAISESPERACAS);
+    NAOTENHOMAISESPERACAS = NAOTENHOMAISESPERACAS & MSTATUS_MIE;
+    printf("As interrupcoes do sistema no modo M esta ");
+    if (NAOTENHOMAISESPERACAS){
+        printf("habilitada\n");
+    }else{
+        printf("desabilitada\n");
+    }
+}
+
 
 void
 main() {
@@ -10,8 +26,8 @@ main() {
     // \uXXXX e \UXXXXXXXX são chamados universal-character-name
     printf(CLEAR_SCREEN CURSOR_UP_LEFT CORAL "\u26F0  尺OS - 尺oncador Operating System (V0.1) \U0001F920\n");
     memory_test();
+    verify_MIE();
     // puts("\u26F0  尺OS - 尺oncador Operating System (V0.1) \U0001F920");
-    
     for(;;) {
         c = uartgetc();
         if (c == -1)
