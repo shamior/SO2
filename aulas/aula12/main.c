@@ -13,7 +13,7 @@ main() {
     // \uXXXX e \UXXXXXXXX são chamados universal-character-name
     printf(CLEAR_SCREEN CURSOR_UP_LEFT CORAL "\u26F0  尺OS - 尺oncador Operating System (V0.1) \U0001F920\n");
     memory_test();
-    ponteru[2562547752] = 8;
+    ponteru[25622121112753] = 8;
     printf("%d\n", ponteru[2562547752]);
     r_mstatus();
     for(;;) {
